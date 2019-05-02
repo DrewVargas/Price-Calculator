@@ -5,7 +5,6 @@ function totalPrice(arr) {
       price: parseInt(item.price)
     };
   });
-  console.log(num);
   return num.reduce((curr, item) => curr + item.price, 0);
 }
 

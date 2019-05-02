@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SalesTax from './salesTax';
 
 class PriceListForm extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class PriceListForm extends Component {
           />
           <button>Add Item</button>
         </form>
+        <SalesTax totalPrice={parseFloat(this.props.totalPrice)} />
       </div>
     );
   }

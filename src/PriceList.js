@@ -7,7 +7,7 @@ class PriceList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [{ name: 'cookies', price: 3 }]
+      items: []
     };
     this.addItem = this.addItem.bind(this);
   }
@@ -22,7 +22,10 @@ class PriceList extends Component {
       <div>
         <h1>Total Price Calculator</h1>
         <div className="PriceList-Container">
-          <PriceListForm addItem={this.addItem} />
+          <PriceListForm
+            addItem={this.addItem}
+            totalPrice={totalPrice(this.state.items)}
+          />
           <div className="PriceList">
             {this.state.items.map(item => (
               <h4>
@@ -31,6 +34,7 @@ class PriceList extends Component {
             ))}
           </div>
         </div>
+        <h4>SubTotal: </h4>
         <h3>Total Price: ${totalPrice(this.state.items)}</h3>
       </div>
     );
