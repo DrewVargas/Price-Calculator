@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SalesTax from './salesTax';
+import uuid from 'uuid/v4';
 
 class PriceListForm extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class PriceListForm extends Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    this.props.addItem(this.state);
+    this.props.addItem({ ...this.state, id: uuid() });
     this.setState({ name: '', price: '' });
   }
   render() {
@@ -38,7 +39,10 @@ class PriceListForm extends Component {
           />
           <button>Add Item</button>
         </form>
-        <SalesTax totalPrice={parseFloat(this.props.totalPrice)} />
+        <SalesTax
+          totalPrice={this.props.totalPrice}
+          calcTotal={this.props.calcTotal}
+        />
       </div>
     );
   }
